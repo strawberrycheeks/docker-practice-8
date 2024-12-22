@@ -1,0 +1,5 @@
+fastapi
+grpcio
+grpcio-tools
+sqlalchemy
+uvicorn

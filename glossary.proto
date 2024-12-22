@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+message Empty {}
+
+message Term {
+  int32 id = 1;
+  string word = 2;
+  string meaning = 3;
+}
+
+message TermsList {
+  repeated Term terms = 1;
+}
+
+message CreateTermRequest {
+  string word = 1;
+  string meaning = 2;
+}
+message CreateTermResponse {
+  string message = 1;
+}
+
+message GetTermRequest {
+  int32 id = 1;
+}
+message GetTermResponse {
+  Term term = 1;
+}
+
+message UpdateTermRequest {
+  Term term = 1; 
+}
+message UpdateTermResponse {
+  string message = 1;
+}
+
+message DeleteTermRequest {
+  int32 id = 1;
+}
+message DeleteTermResponse {
+  string message = 1;
+}
+
+service Glossary {
+  rpc GetAllTerms (Empty) returns (TermsList);
+  rpc CreateTerm (CreateTermRequest) returns (CreateTermResponse);
+  rpc GetTerm (GetTermRequest) returns (GetTermResponse);
+  rpc UpdateTerm (UpdateTermRequest) returns (UpdateTermResponse);
+  rpc DeleteTerm(DeleteTermRequest) returns (DeleteTermResponse);
+}
+
+
+
