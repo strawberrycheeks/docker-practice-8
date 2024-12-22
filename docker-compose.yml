@@ -1,0 +1,18 @@
+services:
+  glossary-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: glossary-server
+    ports:
+      - "50051:50051"
+
+  glossary-client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: glossary-client
+    ports:
+      - "8000:8000"
+    depends_on:
+      - glossary-server
